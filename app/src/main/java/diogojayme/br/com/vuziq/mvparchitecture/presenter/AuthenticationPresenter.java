@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import diogojayme.br.com.vuziq.mvparchitecture.application.AndroidApplication;
 import diogojayme.br.com.vuziq.mvparchitecture.domain.models.User;
+import diogojayme.br.com.vuziq.mvparchitecture.domain.respository.UserRepository;
 import diogojayme.br.com.vuziq.mvparchitecture.domain.services.AuthenticationNetworkService;
 import diogojayme.br.com.vuziq.mvparchitecture.view.LoginView;
 
@@ -16,9 +17,10 @@ public class AuthenticationPresenter {
     private LoginView loginView;
 
     @Inject AuthenticationNetworkService authenticationService;
+    @Inject UserRepository userRepository;
 
     public AuthenticationPresenter(LoginView loginView){
-        AndroidApplication.Api().inject(this);
+        AndroidApplication.AppComponent().inject(this);
         this.loginView = loginView;
     }
 
@@ -28,6 +30,7 @@ public class AuthenticationPresenter {
         RxRequest<User> rxRequest = new RxRequest<User>() {
             @Override
             public void onSuccess(User user) {
+                userRepository.isUserLogged(user);
                 loginView.onAuthenticated(user);
             }
 
