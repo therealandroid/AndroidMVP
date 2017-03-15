@@ -5,6 +5,6 @@ package diogojayme.br.com.vuziq.mvparchitecture.application;
  */
 
 public class Config {
-    public static final String BASE_URL = "http://private-277bb-antenado.apiary-mock.com";
+    public static final String BASE_URL = "";
 
 }
