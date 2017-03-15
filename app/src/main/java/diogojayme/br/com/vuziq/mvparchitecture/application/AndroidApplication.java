@@ -2,10 +2,11 @@ package diogojayme.br.com.vuziq.mvparchitecture.application;
 
 import android.app.Application;
 
+import diogojayme.br.com.vuziq.mvparchitecture.domain.components.DaggerRepositoryComponent;
 import diogojayme.br.com.vuziq.mvparchitecture.domain.components.DaggerServicesComponent;
+import diogojayme.br.com.vuziq.mvparchitecture.domain.components.RepositoryComponent;
 import diogojayme.br.com.vuziq.mvparchitecture.domain.components.ServicesComponent;
 import diogojayme.br.com.vuziq.mvparchitecture.domain.module.NetworkModule;
-import diogojayme.br.com.vuziq.mvparchitecture.domain.module.ServicesImplModule;
 import diogojayme.br.com.vuziq.mvparchitecture.domain.module.ServicesModule;
 
 /**
@@ -14,6 +15,8 @@ import diogojayme.br.com.vuziq.mvparchitecture.domain.module.ServicesModule;
 
 public class AndroidApplication extends Application {
     private ServicesComponent servicesComponent;
+    private RepositoryComponent repositoryComponent;
+
     public static AndroidApplication instance;
 
     @Override
@@ -25,7 +28,10 @@ public class AndroidApplication extends Application {
                 .builder()
                 .networkModule(new NetworkModule())
                 .servicesModule(new ServicesModule())
-                .servicesImplModule(new ServicesImplModule())
+                .build();
+
+        repositoryComponent = DaggerRepositoryComponent
+                .builder()
                 .build();
     }
 
@@ -43,4 +49,24 @@ public class AndroidApplication extends Application {
         return instance.servicesComponent;
     }
 
+
+    public static RepositoryComponent Repository() {
+        try {
+            if(instance == null || instance.repositoryComponent == null){
+                throw new NullPointerException("repositoryComponent is null");
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        return instance.repositoryComponent;
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        instance = null;
+    }
 }

@@ -1,13 +1,10 @@
 package diogojayme.br.com.vuziq.mvparchitecture.domain.mapper;
 
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.lang.reflect.Type;
 
-import io.realm.Realm;
+import javax.inject.Inject;
 
 /**
  * Created by diogojayme on 3/14/17.
@@ -16,19 +13,9 @@ import io.realm.Realm;
 public class Mapper {
     private Gson gson;
 
-    public Mapper(){
-        gson = new GsonBuilder()
-                .setExclusionStrategies(new ExclusionStrategy() {
-                    @Override
-                    public boolean shouldSkipField(FieldAttributes f) {
-                        return f.getDeclaringClass().equals(Realm.class);
-                    }
-
-                    @Override
-                    public boolean shouldSkipClass(Class<?> clazz) {
-                        return false;
-                    }
-                }).create();
+    @Inject
+    public Mapper(Gson gson){
+        this.gson = gson;
     }
 
     public <T> T transform(Object from, Class<T> to) {

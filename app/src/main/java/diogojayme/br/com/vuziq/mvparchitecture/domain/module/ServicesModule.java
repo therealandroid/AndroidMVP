@@ -17,14 +17,13 @@ public class ServicesModule {
 
     @Provides
     @Singleton
-    public AuthenticationNetworkService provideLoginService(Retrofit retrofit){
+    public AuthenticationNetworkService provideLoginService(Retrofit retrofit) {
         return retrofit.create(AuthenticationNetworkService.class);
     }
 
-
     @Provides
     @Singleton
-    public ImagesNetworkService provideImagesService(Retrofit retrofit){
+    public ImagesNetworkService provideImagesService(Retrofit retrofit) {
         return retrofit.create(ImagesNetworkService.class);
     }
 }

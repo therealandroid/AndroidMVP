@@ -19,14 +19,12 @@ import io.realm.RealmObject;
 
 public abstract class GenericRepository<T extends RealmObject> {
     private Class<T> beanClass;
-    public Mapper mapper;
 
     public Realm getDefaultInstance(){
         return Realm.getDefaultInstance();
     }
 
     protected GenericRepository() {
-        this.mapper = new Mapper();
 
         Type genericSuperClass = getClass().getGenericSuperclass();
 
@@ -36,22 +34,37 @@ public abstract class GenericRepository<T extends RealmObject> {
     }
 
     public T findByFieldName(String fieldName, String value){
-        Realm realm = Realm.getDefaultInstance();
+        Realm realm = getDefaultInstance();
+        return realm.copyFromRealm(realm.where(beanClass).equalTo(fieldName, value).findFirst());
+    }
+
+    public T findByFieldName(String fieldName, boolean value){
+        Realm realm = getDefaultInstance();
+        return realm.copyFromRealm(realm.where(beanClass).equalTo(fieldName, value).findFirst());
+    }
+
+    public T findByFieldName(String fieldName, long value){
+        Realm realm = getDefaultInstance();
+        return realm.copyFromRealm(realm.where(beanClass).equalTo(fieldName, value).findFirst());
+    }
+
+    public T findByFieldName(String fieldName, int value){
+        Realm realm = getDefaultInstance();
         return realm.copyFromRealm(realm.where(beanClass).equalTo(fieldName, value).findFirst());
     }
 
     public T findById(long id){
-        Realm realm = Realm.getDefaultInstance();
+        Realm realm = getDefaultInstance();
         return realm.copyFromRealm(realm.where(beanClass).equalTo("id", id).findFirst());
     }
 
     public List<T> findAll(){
-        Realm realm = Realm.getDefaultInstance();
+        Realm realm = getDefaultInstance();
         return realm.copyFromRealm(realm.where(beanClass).findAll());
     }
 
     public T insertOrUpdate(T realmObject){
-        Realm realm = Realm.getDefaultInstance();
+        Realm realm = getDefaultInstance();
         realm.beginTransaction();
         realmObject = realm.copyToRealmOrUpdate(realmObject);
         realm.commitTransaction();
