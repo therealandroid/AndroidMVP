@@ -1,14 +1,22 @@
 # Welcome 
 
-to MVP Android Architecture
+to my Android Playground Project
 
-Hi! This is just a simple architecture for Android Applications using **MVP**
-
+Hi! This is just a simple project that I try to solve some commom problems in android.
 
 ----------
 
 
-Technologies and Frameworks
+Problems I want to solve:
+
+* The best way to separate layers in a MVP Architecture such as the access to Database and API
+* The best way to separate UI and Presenter to keep it really simple and uncoupled.
+* Another stuffs that I don't know yet
+
+----------
+
+
+Technologies and Frameworks used
 
 * **Dagger 2**
 * **RxAndroid**
