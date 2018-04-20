@@ -1,21 +1,21 @@
-* Prerequisites
+### Description
 
-* Description
 [Description of the issue]
 
-* Steps to Reproduce
+### Steps to Reproduce
 
-[First Step]
-[Second Step]
-[and so on...]
+1. [First Step]
+2. [Second Step]
+3. [and so on...]
 
-* Expected behavior: [What you expect to happen]
+**Expected behavior:** [What you expect to happen]
 
-* Actual behavior: [What actually happens]
+**Actual behavior:** [What actually happens]
 
-* Reproduces how often: [What percentage of the time does it reproduce?]
+**Reproduces how often:** [What percentage of the time does it reproduce?]
 
-* Versions
-You can get this information from API, Android or iOS. Also, please include the OS and what version of the OS you're running.
+### Versions
 
-* Additional Information
+### Additional Information
+
+Any additional information, configuration or data that might be necessary to reproduce the issue.
