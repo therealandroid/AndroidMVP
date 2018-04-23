@@ -18,10 +18,13 @@ Problems I want to solve:
 
 Technologies and Frameworks used
 
-* **Dagger 2**
+## Update: April 28 2018
+
+* **~~Dagger 2~~**
 * **RxAndroid**
 * **Realm**
 * **MVP**
+* **Repository**
 
 
 ----------
