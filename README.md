@@ -1,6 +1,4 @@
-# Welcome 
-
-to my Android Playground Project
+# Android MVP architecture testing
 
 Hi! This is just a simple project that I try to solve some commom problems in android.
 
